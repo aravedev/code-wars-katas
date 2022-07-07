@@ -1,0 +1,7 @@
+// taking an array of string, join each word with a separate space
+
+let str = ["smash", "potatos", "jummy"] -> result "smash potatos jummy"
+
+smash = function (words) {
+  return words.join(" ");
+};
