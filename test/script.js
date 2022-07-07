@@ -1331,3 +1331,68 @@ The every() method does not execute the function for empty elements.
 The every() method does not change the original array
 
 */
+
+/*
+It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
+
+My solution:
+
+const str = "country";
+const  removeChar = str => str.substring(1,str.length-1)
+
+function removeChar(str) {
+  return str.substring(1, str.length - 1);
+}
+
+console.log(removeChar(str));
+
+//test:
+
+const chai = require("chai");
+const assert = chai.assert;
+chai.config.truncateThreshold=0;
+
+describe("Tests", () => {
+  it("Fixed Tests", () => {
+    assert.strictEqual(removeChar('eloquent'), 'loquen');
+    assert.strictEqual(removeChar('country'), 'ountr');
+    assert.strictEqual(removeChar('person'), 'erso');
+    assert.strictEqual(removeChar('place'), 'lac');
+    assert.strictEqual(removeChar('ooopsss'), 'oopss');
+  });
+});
+
+*/
+
+/*
+
+Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+The output should be two capital letters with a dot separating them.
+
+It should look like this:
+
+Sam Harris => S.H
+
+patrick feeney => P.F
+
+My solution:
+
+const abbrevName = name => name.split(" ").map(e => e[0]).join(".").toUpperCase();
+
+test:
+const chai = require("chai");
+const assert = chai.assert;
+chai.config.truncateThreshold=0;
+
+describe("Basic tests", () => {
+  it("Testing for fixed tests", () => {
+    assert.strictEqual(abbrevName("Sam Harris"), "S.H");
+    assert.strictEqual(abbrevName("Patrick Feenan"), "P.F");
+    assert.strictEqual(abbrevName("Evan Cole"), "E.C");
+    assert.strictEqual(abbrevName("P Favuzzi"), "P.F");
+    assert.strictEqual(abbrevName("David Mendieta"), "D.M");
+  });
+});
+
+*/
