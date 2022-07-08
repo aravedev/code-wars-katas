@@ -1433,3 +1433,68 @@ function disemvowel(str) {
 }
  * 
  */
+
+/*
+You live in the city of Cartesia where all roads are laid out in a perfect grid. You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. The city provides its citizens with a Walk Generating App on their phones -- everytime you press the button it sends you an array of one-letter strings representing directions to walk (eg. ['n', 's', 'w', 'e']). You always walk only a single block for each letter (direction) and you know it takes you one minute to traverse one city block, so create a function that will return true if the walk the app gives you will take you exactly ten minutes (you don't want to be early or late!) and will, of course, return you to your starting point. Return false otherwise.
+
+Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
+
+
+function isValidWalk(walk) {
+  let steps = walk.length;
+
+  let check = [];
+  let directions = ["n", "e", "w", "s"];
+  let checkDirections = [];
+  if (steps == 10) {
+    directions.forEach((e) => {
+      let letters = walk.filter((gps) => gps == e);
+      if (letters.length > 0) {
+        checkDirections.push(e);
+        if (e == "w" || e == "s") {
+          check.push(-letters.length);
+        } else {
+          check.push(letters.length);
+        }
+      }
+    });
+  } else {
+    return false;
+  }
+
+  console.log("checkDirections: " + checkDirections);
+
+  if (checkDirections.length === 2) {
+    if (checkDirections.includes("w") && checkDirections.includes("s")) {
+      console.log(checkDirections);
+      return false;
+    } else if (checkDirections.includes("n") && checkDirections.includes("e")) {
+      console.log(checkDirections);
+      return false;
+    } else if (checkDirections.includes("n") && checkDirections.includes("w")) {
+      console.log(checkDirections);
+      return false;
+    } else if (checkDirections.includes("s") && checkDirections.includes("e")) {
+      console.log(checkDirections);
+      return false;
+    }
+  }
+
+  console.log(walk);
+  console.log(check);
+  let result = check.reduce((acc, sum) => acc + sum, 0);
+  console.log("result: " + result);
+
+  if (result === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let arr = ["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"];
+
+console.log(isValidWalk(arr));
+
+
+*/
