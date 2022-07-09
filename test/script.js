@@ -1498,3 +1498,98 @@ console.log(isValidWalk(arr));
 
 
 */
+
+/*
+
+Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+""  -->  ""
+
+My solution:
+
+const phrase = "is2 Thi1s T4est 3a";
+
+function yourOrder(str) {
+  let position = 0;
+  let arrLength = str.split(" ").length;
+
+  // Creating an empty array with size "length" and filling it with 0
+  let arrSorted = Array(arrLength).fill(0);
+
+  
+  let tempArr = [];
+
+  // Separating each word with blank space and sending them to arr 
+  let arr = str.split(" ");
+
+  // looping through arr
+  arr.forEach((index) => {
+
+    // Separating each letter and sending each char to tempArr
+    tempArr = index.split("");
+    console.log(tempArr);
+
+    // Looping through tempArr which stored individual chars
+    tempArr.forEach((n) => {
+
+      // Checking if each char (n) is number
+      if (!isNaN(n)) {
+
+        //if n is a number then converte it from string to a number and substract 1, sending the final result to position.
+        position = +n - 1;
+        console.log("position is " + position);
+
+        // arrSorted will receive position and will assign its respective value.
+        arrSorted[position] = index;
+        console.log("arrSorted is: " + arrSorted);
+      }
+    });
+  });
+
+  return arrSorted.join(" ");
+}
+
+console.log(yourOrder(phrase));
+
+// My final answer but refactorized
+function yourOrder2(words) {
+  if (words.length > 0) {
+    let position = 0;
+    let arrSorted = Array(words.split(" ").length).fill(0);
+    let tempArr = words.split(" ").map((index) => {
+      index.split("").forEach((n) => {
+        if (!isNaN(n)) {
+          position = +n - 1;
+          arrSorted[position] = index;
+          console.log("arrSorteded is :" + arrSorted);
+        }
+      });
+    });
+
+    return arrSorted.join(" ");
+  } else {
+    return "";
+  }
+}
+
+console.log("Thi1s is2 3a T4est");
+const phrase2 = "is2 Thi1s T4est 3a";
+console.log(yourOrder2(phrase2));
+
+// testing:
+const {assert} = require('chai');
+
+describe("order", () => {
+  it("should work corectly", () => {
+    assert.strictEqual(order("is2 Thi1s T4est 3a"), "Thi1s is2 3a T4est")
+    assert.strictEqual(order("4of Fo1r pe6ople g3ood th5e the2"), "Fo1r the2 g3ood 4of th5e pe6ople")
+    assert.strictEqual(order(""), "", "empty input should return empty string" )
+  });
+});
+
+
+*/
