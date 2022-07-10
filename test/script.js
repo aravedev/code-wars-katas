@@ -1593,3 +1593,45 @@ describe("order", () => {
 
 
 */
+
+/*
+Implement a function which convert the given boolean value into its string representation.
+
+Note: Only valid inputs will be given.
+
+const booleanToString = (b) => (b ? "true" : "false");
+
+console.log(booleanToString(true));
+
+//test:
+
+describe("Tests", () => {
+  it("test", () => {
+Test.assertEquals(booleanToString(true), "true", 'When we pass in true, we want the string "true" as output');
+Test.assertEquals(booleanToString(false), "false", 'When we pass in false, we want the string "false" as output');
+  });
+});
+
+function SeriesSum(n) {
+  let serie = [];
+  //console.log("n :" + n);
+  if (n > 1) {
+    for (let i = 0; i < n - 1; i++) {
+      serie.push(1 / (4 + 3 * i));
+      //console.log(serie);
+    }
+
+    let result = (
+      serie.map((e) => +e).reduce((acc, sum) => acc + sum) + 1
+    ).toFixed(2);
+    return result;
+  } else if (n == 1) {
+    return "1.00";
+  } else {
+    return "0.00";
+  }
+}
+
+console.log(SeriesSum(15));
+
+*/
