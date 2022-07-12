@@ -1762,3 +1762,103 @@ describe("Basic tests",() =>{
   });
 });
 */
+
+/*
+Welcome.
+
+In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+If anything in the text isn't a letter, ignore it and don't return it.
+
+"a" = 1, "b" = 2, etc.
+
+Example
+alphabetPosition("The sunset sets at twelve o' clock.")
+Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" ( as a string )
+
+my solution:
+
+function alphabetPosition(text) {
+  let position = text
+    .toLowerCase()
+    .split("")
+    .map((e) => {
+      if (e.charCodeAt(e) > 96 && e.charCodeAt(e) < 123) {
+        //numbers.push(e.charCodeAt(e) - 96);
+        return e.charCodeAt(e) - 96;
+      }
+    })
+    .filter((e) => e != undefined);
+
+  //return position;
+  return position.join(" ").toString();
+}
+
+console.log(alphabetPosition("The sunset sets at twelve o' clock."));
+*/
+
+/*
+
+Clock shows h hours, m minutes and s seconds after midnight.
+
+Your task is to write a function which returns the time since midnight in milliseconds.
+
+Example:
+h = 0
+m = 1
+s = 1
+
+result = 61000
+Input constraints:
+
+0 <= h <= 23
+0 <= m <= 59
+0 <= s <= 59 
+
+my solution:
+
+function past(h, m, s) {
+  s = s * 1000;
+  m = m * 60000;
+  h = h * 3600000;
+
+  return s + m + h;
+}
+
+console.log(past(0, 0, 0));
+
+//testing:
+
+describe("Fixed Tests", () => {
+  it("Tests", () => {
+    Test.assertEquals(past(0,1,1),61000)
+    Test.assertEquals(past(1,1,1),3661000)
+    Test.assertEquals(past(0,0,0),0)
+    Test.assertEquals(past(1,0,1),3601000)
+    Test.assertEquals(past(1,0,0),3600000)
+  });
+});
+*/
+
+/*
+Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types.
+
+my solution:
+const findShort = (s) => {
+  let str = s.split(" ");
+  let temp = str[0].length;
+
+  str.forEach((e) => {
+    e.length < temp ? (temp = e.length) : temp;
+  });
+
+  return temp;
+};
+
+let s = "bitcoin take over the world maybe who knows perhaps";
+
+console.log(findShort(s));
+
+*/
