@@ -1904,3 +1904,107 @@ let s = "recede";
 console.log(duplicateEncode(s));
 
 */
+/*
+ A square of squares
+You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+
+However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+
+Task
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+The tests will always use some integral number, so don't worry about that in dynamic typed languages
+
+My solution:
+
+var isSquare = function (n) {
+  return n >= 0 && Math.sqrt(n) % 1 === 0 ? true : false;
+};
+
+console.log(isSquare(4));
+
+
+ */
+
+/*
+
+Your task is to create a function that does four basic mathematical operations.
+
+The function should take three arguments - operation(string/char), value1(number), value2(number).
+The function should return result of numbers after applying the chosen operation.
+
+Examples(Operator, value1, value2) --> output
+('+', 4, 7) --> 11
+('-', 15, 18) --> -3
+('*', 5, 5) --> 25
+('/', 49, 7) --> 7
+
+My solution:
+
+function basicOp(operation, value1, value2) {
+  return eval(value1 + operation + value2);
+}
+
+console.log(basicOp("/", 9, 3));
+
+*/
+
+/*
+Given an array of integers.
+
+Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative.
+
+If the input is an empty array or is null, return an empty array.
+
+Example
+For input [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15], you should return [10, -65].
+
+My solution:
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15];
+
+function countPositivesSumNegatives(input) {
+  console.log(input);
+
+  // Checking if is an array exist and isnt empty
+  if (Array.isArray(input) && input.length > 0) {
+    let arr = [];
+
+    const positive = input.filter((e) => e > 0).length;
+    arr.push(positive);
+    const neg = input.filter((e) => e < 0).reduce((acc, sum) => acc + sum, 0);
+    arr.push(neg);
+
+    return arr;
+  } else {
+    return [];
+  }
+}
+
+console.log(countPositivesSumNegatives(arr));
+
+//test
+
+const chai = require("chai");
+const assert = chai.assert;
+chai.config.truncateThreshold=0;
+
+describe("Example tests", () => {
+  it("Testing for fixed test 1", () => {
+    let testData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15];
+    let actual = countPositivesSumNegatives(testData);
+    let expected = [10, -65];
+    assert.deepEqual(actual, expected);
+  })
+    
+  it("Testing for fixed test 2", () => {
+    let testData = [0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14];
+    let actual = countPositivesSumNegatives(testData);
+    let expected = [8, -50];    
+    assert.deepEqual(actual, expected);
+  });
+});
+
+*/
