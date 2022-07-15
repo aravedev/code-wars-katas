@@ -2008,3 +2008,100 @@ describe("Example tests", () => {
 });
 
 */
+
+/*
+Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+
+// testing:
+
+function doTest(a, n) {
+  console.log("A = ", a);
+  console.log("n = ", n);
+  Test.assertEquals(findOdd(a), n);
+}
+describe('Example tests', function() {
+  doTest([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5], 5);
+  doTest([1,1,2,-2,5,2,4,4,-1,-2,5], -1);
+  doTest([20,1,1,2,2,3,3,5,5,4,20,4,5], 5);
+  doTest([10], 10);
+  doTest([1,1,1,1,1,1,10,1,1,1,1], 10);
+  doTest([5,4,3,2,1,5,4,3,2,10,10], 1);
+});
+
+// My solution
+
+function findOdd(A) {
+  let odd = A;
+  let arrTimes = [];
+  let arrNumbers = [];
+  let times = 0;
+  let min = 0;
+
+  // Looping through odd
+  odd.forEach((n) => {
+    // Checking if n (iterator) doesnt exist into arrNumbers ( where we will send the duplicated numbers)
+    if (!arrNumbers.includes(n)) {
+      // filtering with the value of n
+      times = odd.filter((e) => e == n).length;
+      // checking the length of each number and if the length is odd then do this:
+      if (times % 2 === 1) {
+        // Sending the value of times ( length ) to arrTimes (store the number of times a # is duplicated)
+        // arrNumbers, stor which number corresponds to the list of duplicates
+        arrTimes.push(times);
+        arrNumbers.push(n);
+      }
+    }
+  });
+
+  // Finding the min number into arrTimes ( times that a number is duplicated)
+  min = Math.min(...arrTimes);
+
+  // Finding the min and looking for its index position inside arrTimes that will be used also as position
+  // in arrNumbers (which number belongs it)
+  return arrNumbers[arrTimes.indexOf(min)];
+}
+
+const arr = [0, 1, 0, 1, 0];
+//const arr = [1, 1, 1, 3, 3, 5];
+
+console.log(findOdd(arr));
+
+// other solution :
+
+function findOdd(arr) {
+  return arr.find((item, index) => arr.filter(el => el == item).length % 2)
+}
+
+The solution takes advantage of the condition that there will always be one odd number in the array.
+
+First the find method is called on the array. What is the find method? The find method returns the first element which meets the condition set in the function.
+
+The condition for the find method in this solution is set as the filter method. What is the filter method? The filter method creates an array of ALL elements that meet the condition set in the function.
+
+For each element in the array, the find method will take that element as ITEM and then the filter will return an array of all elements in the array that are equal to ITEM.
+
+Then the length of the returned filtered array is found. The length refers to the number of times the ITEM is in the array. If the length is odd, length % 2 will return 1 which is a truthy value.
+
+The first ITEM that gets this truthy value will be returned by the find method.
+
+That's it. Hope that helps.
+
+
+*/
+/* Sum of odd numbers row
+
+function rowSumOddNumbers(n) {
+  return n ** 3;
+}
+
+console.log(rowSumOddNumbers(42));
+*/
