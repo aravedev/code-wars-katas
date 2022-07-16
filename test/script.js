@@ -2105,3 +2105,72 @@ function rowSumOddNumbers(n) {
 
 console.log(rowSumOddNumbers(42));
 */
+
+/*
+
+You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+#Examples:
+
+Kata.getMiddle("test") should return "es"
+
+Kata.getMiddle("testing") should return "t"
+
+Kata.getMiddle("middle") should return "dd"
+
+Kata.getMiddle("A") should return "A"
+#Input
+
+A word (string) of length 0 < str < 1000 (In javascript you may get slightly more than 1000 in some test cases due to an error in the test cases). You do not need to test for this. This is only here to tell you that you do not need to worry about your solution timing out.
+
+#Output
+
+The middle character(s) of the word represented as a string.
+
+My solution:
+
+function getMiddle(s) {
+  const str = s.split("");
+  const length = str.length / 2;
+
+  return str.length % 2 === 0
+    ? str[length - 1] + str[length]
+    : str[Math.floor(length)];
+    
+}
+
+const str1 = "test";
+const str2 = "middle";
+
+console.log(getMiddle(str2));
+
+*/
+
+/*
+Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
+
+Note: input will never be an empty string
+
+// My solution:
+
+function fakeBin(x) {
+  const number = x.split("");
+  let arr = number.map((e) => {
+    return Number(e) <= 4 ? 0 : 1;
+
+    
+   // if (Number(e) <= 4) {
+    //  return 0;
+    //} else {
+    //  return 1;
+    //}
+    
+  });
+
+  return arr.join("").toString();
+}
+
+const n = "45385593107843568";
+console.log(fakeBin(n));
+
+*/
