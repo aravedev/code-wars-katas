@@ -2174,3 +2174,124 @@ const n = "45385593107843568";
 console.log(fakeBin(n));
 
 */
+
+/*
+Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+Examples:
+
+solution('abc', 'bc') // returns true
+solution('abc', 'd') // returns false
+
+//testing:
+describe("Tests", () => {
+  it("test", () => {
+Test.assertEquals(solution('abcde', 'cde'), true)
+Test.assertEquals(solution('abcde', 'abc'), false)
+});
+});
+
+// My solution:
+
+function solution(str, ending) {
+  const result = str.length - ending.length;
+  const letters = str.slice(result);
+
+  return letters == ending ? true : false;
+}
+
+console.log(solution("abc", "d"));
+
+// forum solution.
+function solution(str, ending){
+  return str.endsWith(ending);
+}
+
+*/
+
+/*
+
+var min = function (list) {
+  const numbers = Math.min(...list);
+  return numbers;
+};
+
+var max = function (list) {
+  const numbers = Math.max(...list);
+  return numbers;
+};
+
+console.log(min([5, 2]));
+
+*/
+
+/*
+
+Given a string of words, you need to find the highest scoring word.
+
+Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+
+You need to return the highest scoring word as a string.
+
+If two words score the same, return the word that appears earliest in the original string.
+
+All letters will be lowercase and all inputs will be valid.
+
+My solution:
+
+function high(x) {
+  let total = 0;
+  let tempStr = [];
+  let locker = [];
+
+  // Separating each letter by blank space and sending into a new array letters
+  let letters = x.split(" ");
+  console.log(letters);
+
+  // Looping through arr letters
+  letters.forEach((word, index) => {
+    // splitting each char into a new array tempStr
+    tempStr = letters[index].split("");
+
+    // looping through tempStr and checking each char, we will replace the char by ASCII table - 96 , it will give us the position in the alphabet for each letter
+    tempStr.forEach((e, i) => {
+      tempStr[i] = tempStr[i].charCodeAt(e) - 96;
+    });
+
+    // now that he have replaced each char by its respective position in the alphabet, we will add all the values inside tempStr and will be sent to arr total. Remember that we are getting the total sum for each position in arr Letters and tempStr is being updated each time the loop moves next position in letters.
+    total = tempStr.reduce((acc, sum) => acc + sum, 0);
+    locker.push(total);
+    console.log(tempStr);
+  });
+
+  console.log("locker: " + locker);
+
+  // finding the max value with respect the alphabet
+  let position = Math.max(...locker);
+  let index = locker.indexOf(position);
+
+  return letters[index];
+}
+//str.charCodeAt;
+// div.push(word[index].charCodeAt(n));
+console.log(high("what time are we climbing up the volcano"));
+
+/////testing:
+
+const chai = require("chai");
+const assert = chai.assert;
+chai.config.truncateThreshold=0;
+
+describe("Basic tests", () => {
+  it("Testing for fixed tests", () => {
+    assert.strictEqual(high('man i need a taxi up to ubud'), 'taxi');
+    assert.strictEqual(high('what time are we climbing up the volcano'), 'volcano'); 
+    assert.strictEqual(high('take me to semynak'), 'semynak');   
+    assert.strictEqual(high('aa b'), 'aa');
+    assert.strictEqual(high('b aa'), 'b');
+    assert.strictEqual(high('bb d'), 'bb');
+    assert.strictEqual(high('d bb'), 'd');
+    assert.strictEqual(high('aaa b'), 'aaa');
+  })
+});
+*/
