@@ -2295,3 +2295,139 @@ describe("Basic tests", () => {
   })
 });
 */
+
+/*
+Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+Rules for a smiling face:
+
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned.
+
+Valid smiley face examples: :) :D ;-D :~)
+Invalid smiley faces: ;( :> :} :]
+
+Example
+countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
+countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
+countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
+Note
+In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
+
+
+// testing:
+describe("Basic testing", function() {
+  it("", () => {
+    Test.assertEquals(countSmileys([]), 0);
+    Test.assertEquals(countSmileys([':D',':~)',';~D',':)']), 4);
+    Test.assertEquals(countSmileys([':)',':(',':D',':O',':;']), 2);
+    Test.assertEquals(countSmileys([';]', ':[', ';*', ':$', ';-D']), 1);
+  });
+});
+
+// My solution:
+
+function countSmileys(arr) {
+  const validFace = [
+    ":D",
+    ":)",
+    ":-)",
+    ":-D",
+    ":~)",
+    ":~D",
+    ";D",
+    ";)",
+    ";-)",
+    ";-D",
+    ";~)",
+    ";~D",
+  ];
+
+  let result = [];
+
+  if (Array.isArray(arr) && arr.length == 0) {
+    return 0;
+  } else {
+    // Filtering using the valid faces as reference: Creating a forEach loop for valid faces and using them as input in the filter
+
+    validFace.forEach((face) => {
+
+      // if exist an e eqaul to face then:
+      arr.filter((e) => {
+        if (e === face) {
+          result.push(e);
+        }
+      });
+    });
+
+    //console.log(result);
+    return result.length;
+    //
+  }
+}
+
+console.log(countSmileys([";]", ":[", ";*", ":$", ";-D"]));
+
+// Nice solution:
+
+const faces = new Set()
+for (let eyes of [':',';'])
+    for (let nose of ['-','~',''])
+        for (let mouth of [')','D'])
+            faces.add(eyes+nose+mouth)
+
+countSmileys =(arr)=> arr.filter(x => faces.has(x)).length
+*/
+
+/*
+
+The first century spans from the year 1 up to and including the year 100, the second century - from the year 101 up to and including the year 200, etc.
+
+Task
+Given a year, return the century it is in.
+
+Examples
+1705 --> 18
+1900 --> 19
+1601 --> 17
+2000 --> 20
+
+
+My solution:
+
+function century(year) {
+  if (year < 100) {
+    return 1;
+  } else {
+    const century = year.toString();
+    const length = century.length;
+    const n = century.slice(-2);
+    const result = century.slice(0, length - 2);
+
+    if (n === "00") {
+      return +result;
+    } else {
+      return +result + 1;
+    }
+  }
+}
+
+console.log(century(200000));
+
+// Forum solution
+const century = year => Math.ceil(year/100)
+
+//testing
+
+describe("Tests", () => {
+  it("test", () => {
+Test.assertEquals(century(1705), 18, 'Testing for year 1705');
+Test.assertEquals(century(1900), 19, 'Testing for year 1900');
+Test.assertEquals(century(1601), 17, 'Testing for year 1601');
+Test.assertEquals(century(2000), 20, 'Testing for year 2000');
+Test.assertEquals(century(89), 1, 'Testing for year 89');
+  });
+});
+*/
