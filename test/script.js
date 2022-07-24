@@ -2525,3 +2525,81 @@ Test.assertSimilar(tribonacci([0.5,0.5,0.5],30),[0.5,0.5,0.5,1.5,2.5,4.5,8.5,15.
 })
 
 */
+
+/*
+
+You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+
+Examples
+[7, 1]  =>  [1, 7]
+[5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+
+// my solution:
+
+function sortArray(array) {
+  let indexArr = [];
+  let temp = [];
+  let eve = array.filter((e, index) => {
+    if (Math.abs(e % 2) === 1) {
+      indexArr.push(index);
+      return e;
+    }
+  });
+
+  eve = eve.sort((a, b) => a - b);
+
+  console.log(indexArr);
+  console.log(eve);
+  console.log(array);
+
+  indexArr.forEach((oddIndex) => {
+    eve.forEach((oddNumber) => {
+      if (!temp.includes(oddIndex)) {
+        temp.push(oddIndex);
+        //eve.shift();
+        array[oddIndex] = oddNumber;
+        eve.shift();
+        console.log(`numero eliminado de eve ${oddNumber}`);
+        console.log(`Temporal oddIndex ${temp}`);
+      }
+    });
+  });
+
+  console.log(indexArr);
+  console.log(eve);
+
+  console.log(array);
+  //return actual;
+}
+
+let arr = [
+  -50, 1, -19, 19, -49, 36, 50, 25, 35, 39, 8, -29, 24, -43, 26, 47, -37,
+];
+
+console.log(sortArray(arr));
+
+
+//Forum solution:
+
+function sortArray(array) {
+  const odd = array.filter((x) => x % 2).sort((a,b) => a - b);
+  return array.map((x) => x % 2 ? odd.shift() : x);
+}
+
+Explanation:
+
+function sortArray(arr) {
+  const odd = arr.filter((x) => x % 2 === 1).sort((a, b) => a - b);
+  console.log(odd);
+
+  // Remember that shift() delete the first position in the array and returns it, then this code check if the numer is odd , if it is true then from odd delete the first number and insert it into arr, de lo contrario dejalo como esta.
+  
+  return arr.map((x) => (x % 2 === 1 ? odd.shift() : x));
+  return odd;
+}
+
+let arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+console.log(sortArray(arr));
+
+*/
