@@ -2603,3 +2603,103 @@ let arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 console.log(sortArray(arr));
 
 */
+
+/*
+Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+
+Note: The function accepts an integer and returns an integer
+
+//My solution:
+
+function squareDigits(num) {
+  return Number(
+    num
+      .toString()
+      .split("")
+      .map((e) => e ** 2)
+      .join("")
+  );
+}
+
+const n = 3212;
+console.log(squareDigits(n));
+
+*/
+
+/*
+
+Make a program that filters a list of strings and returns a list with only your friends name in it.
+
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+i.e.
+
+friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+Note: keep the original order of the names in the output.
+
+// my solution:
+
+function friend(friends) {
+  let result = [];
+  friends.filter((e) => {
+    if (e.length === 4) {
+      result.push(e);
+    }
+  });
+
+  return result;
+}
+
+const arr = ["Ryan", "Kieran", "Mark"];
+console.log(friend(arr));
+
+Short answer:
+return friends.filter(n => n.length === 4)
+
+*/
+
+/*
+Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+
+Examples (a, b) --> output (explanation)
+(1, 0) --> 1 (1 + 0 = 1)
+(1, 2) --> 3 (1 + 2 = 3)
+(0, 1) --> 1 (0 + 1 = 1)
+(1, 1) --> 1 (1 since both are same)
+(-1, 0) --> -1 (-1 + 0 = -1)
+(-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
+
+My solution:
+function getSum(a, b) {
+  let temp = [a, b];
+  let arr = [];
+  temp.sort((x, y) => x - y);
+
+  for (let i = temp[0]; i <= temp[1]; i++) {
+    arr.push(i);
+  }
+
+  return arr.reduce((sum, acc) => sum + acc, 0);
+}
+
+console.log(getSum(3, 1));
+
+//testing:
+const chai = require("chai");
+const assert = chai.assert;
+chai.config.truncateThreshold=0;
+
+describe("Basic tests", () => {
+  it("Testing for fixed tests", () => {         
+    assert.strictEqual(getSum(0,-1),-1);
+    assert.strictEqual(getSum(0,1),1);
+  })
+});
+
+*/
