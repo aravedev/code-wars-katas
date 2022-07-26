@@ -2703,3 +2703,175 @@ describe("Basic tests", () => {
 });
 
 */
+
+/*
+Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+Examples
+"This is an example!" ==> "sihT si na !elpmaxe"
+"double  spaces"      ==> "elbuod  secaps"
+
+My solution:
+
+function reverseWords(str) {
+  let result = str.split(" ").map((e) => {
+    return e.split("").reverse().join("");
+  });
+
+  return result.join(" ");
+}
+
+const str = "This is an example!";
+console.log(reverseWords(str));
+
+*/
+
+/*
+// looping through tempStr and checking each char, we will replace the char by ASCII table - 96 , it will give us the position in the alphabet for each letter
+    tempStr.forEach((e, i) => {
+      tempStr[i] = tempStr[i].charCodeAt(e) - 96;
+    });
+*/
+
+/*
+
+ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+
+Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
+
+// my first try:
+
+function rot13(message) {
+  console.log(message);
+  let result = [];
+
+  for (let i = 0; i < message.length; i++) {
+    if (isNaN(message[i])) {
+      let char = message.charCodeAt(i) + 13;
+
+      if (char > 122) {
+        char = char - 122 + 96;
+      }
+      let letter = String.fromCharCode(char);
+      result.push(letter);
+    } else {
+      result.push(message[i]);
+    }
+  }
+
+  return result.join("");
+}
+*/
+/*
+// My final solution:
+
+function rot13(message) {
+  console.log(`this is the input: ${message}`);
+  let result = [];
+
+  for (let i = 0; i < message.length; i++) {
+    // i is not a number? do this
+    if (isNaN(message[i])) {
+      //assing char = convert i in number from ascii table
+      let char = message.charCodeAt(i);
+
+      // if char is grater 64 or lower than 91 is UpperCase
+      if (char > 64 && char < 91) {
+        char = char + 13;
+
+        // if char is greater than 90 we need to substract the result and taking it back to UpperCase ascii table
+        char = char > 90 ? char - 90 + 64 : char;
+      }
+      // if char is greater than 96 or lower than 123 is lower case
+      else if (char > 96 && char < 123) {
+        char = char + 13;
+        char = char > 122 ? char - 122 + 96 : char;
+      }
+
+      // after check the value of char, we convert the number in a letter and send it to result arr
+      let letter = String.fromCharCode(char);
+      result.push(letter);
+    }
+    // if i is  a number or white space just send it to result
+    else {
+      char = message[i];
+      result.push(char);
+    }
+  }
+
+  console.log(`this is the output: ${result}`);
+  return result.join("");
+}
+const str = " =qUem+\n(6";
+console.log(rot13(str));
+
+// solution from the forum : crazy but I need to practice it
+crazy:
+function rot13(message) {
+  const alphabet = {
+    a: 'n',
+    b: 'o',
+    c: 'p',
+    d: 'q',
+    e: 'r',
+    f: 's',
+    g: 't',
+    h: 'u',
+    i: 'v',
+    j: 'w',
+    k: 'x',
+    l: 'y',
+    m: 'z',
+    n: 'a',
+    o: 'b',
+    p: 'c',
+    q: 'd',
+    r: 'e',
+    s: 'f',
+    t: 'g',
+    u: 'h',
+    v: 'i',
+    w: 'j',
+    x: 'k',
+    y: 'l',
+    z: 'm',
+    A: 'N',
+    B: 'O',
+    C: 'P',
+    D: 'Q',
+    E: 'R',
+    F: 'S',
+    G: 'T',
+    H: 'U',
+    I: 'V',
+    J: 'W',
+    K: 'X',
+    L: 'Y',
+    M: 'Z',
+    N: 'A',
+    O: 'B',
+    P: 'C',
+    Q: 'D',
+    R: 'E',
+    S: 'F',
+    T: 'G',
+    U: 'H',
+    V: 'I',
+    W: 'J',
+    X: 'K',
+    Y: 'L',
+    Z: 'M',
+  };
+ 
+  let str = '';
+
+  for(let i = 0; i< message.length; i++) {
+    alphabet[message[i]]
+      ? str += alphabet[message[i]]
+      : str += message[i]
+  }
+
+  return str;
+
+}
+*/
