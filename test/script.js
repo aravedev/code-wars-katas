@@ -2941,3 +2941,43 @@ function wave(str) {
 const str1 = "two worlds";
 console.log(wave(" gap "));
 */
+
+/*
+A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+
+Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+
+// my solution:
+function isPangram(string) {
+  let result = string.toLowerCase().split("");
+  let abc = "abcdefghijklmnopqrstuvwxyz".split("");
+  let checker = true;
+  abc.forEach((e) => {
+    if (checker === true) {
+      if (!result.includes(e)) {
+        checker = false;
+      }
+    } else {
+      checker = false;
+    }
+  });
+
+  return checker;
+}
+
+const pangram = "the quick brown fox jumps over the lazy dog";
+console.log(isPangram(pangram));
+
+// my solution with help of the forum
+
+function isPangram(string) {
+  const result = string.toLowerCase().split("");
+  const abc = "abcdefghijklmnopqrstuvwxyz".split("");
+  return abc.every((e) => result.includes(e));
+}
+
+const pangram = "Pack my box with ive dozen liquor jugs";
+console.log(isPangram(pangram));
+
+
+*/
