@@ -2981,3 +2981,100 @@ console.log(isPangram(pangram));
 
 
 */
+
+/*
+Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+
+If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
+
+Examples:(Input --> Output)
+
+121 --> 144
+625 --> 676
+114 --> -1 since 114 is not a perfect square
+
+function findNextSquare(sq) {
+  const result = Math.sqrt(sq);
+  return Number.isInteger(result) ? (result + 1) ** 2 : -1;
+}
+
+const number = 121;
+console.log(findNextSquare(number));
+*/
+
+/*
+
+You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+
+Examples:
+strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], k = 2
+
+Concatenate the consecutive strings of strarr by 2, we get:
+
+treefoling   (length 10)  concatenation of strarr[0] and strarr[1]
+folingtrashy ("      12)  concatenation of strarr[1] and strarr[2]
+trashyblue   ("      10)  concatenation of strarr[2] and strarr[3]
+blueabcdef   ("      10)  concatenation of strarr[3] and strarr[4]
+abcdefuvwxyz ("      12)  concatenation of strarr[4] and strarr[5]
+
+Two strings are the longest: "folingtrashy" and "abcdefuvwxyz".
+The first that came is "folingtrashy" so 
+longest_consec(strarr, 2) should return "folingtrashy".
+
+In the same way:
+longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"
+n being the length of the string array, if n = 0 or k > n or k <= 0 return "" (return Nothing in Elm, "nothing" in Erlang).
+
+Note
+consecutive strings : follow one after another without an interruption
+
+// My solution:
+
+function longestConsec(strarr, k) {
+
+  let arr = [];
+  let finalArr = [];
+  let tempLargestIndex = 0;
+  let tempLargestStr = 0;
+
+  if ((k > 0 && strarr.length > k) || strarr.length === k) {
+    for (let i = 0; i < strarr.length; i++) {
+      
+      // slicing each part of the array in sub-arrays taking k as reference
+      let sliceArr = strarr.slice(i, i + k);
+      arr.push(sliceArr);
+    }
+
+    // joining each sub-group of arrays in one unique sub-array
+    arr.forEach((e) => {
+      finalArr.push(e.join(""));
+    });
+
+    // Checking the lenght of each sub-arry and storing the index of largest one
+    finalArr.forEach((e, index) => {
+      if (e.length > tempLargestStr) {
+        tempLargestStr = e.length;
+        tempLargestIndex = index;
+      }
+    });
+
+    return finalArr[tempLargestIndex];
+  } else {
+    return "";
+  }
+  
+}
+
+const strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"];
+const k = 2;
+
+const lar =
+  "pbxktcwdtfzba,mkormpxp,xuzcnjtyebvh,shjxwbbxy,zrylaenyy,ruxttvwozxank,akcmwruajl,bvebbh,cuiggidf,foygbff,ucamqhqph,vkszmxxw,hjxkmf,vqiemmobvrro,dtngapeg,wehondgfvbhsoc,rqxrtwquqvrtlgqm,vsxwaat,qdkolymzska,rsguvjcvk,kcrlbfxbsjwojn,bsanaawknz,xxwewzasgtribzue,xceyhywbct,gfolxjdqbeh,fcsaatx,lyhdphdnpoev,nachkin,xklmprlj,tvsuymur,tjrpgiyrmnv,thgbyaakq,wzqzqhtz,goovpnocry,hweuezyso,karsxqdpfuzi,kmbmuojwmkvipq,jdnbmidryhj,jtdhasebmzv,qwjfjulz,mfgzdooxmafdi,bhhssgiqrpyg,jvlkmbfgvcgi,xdfrjrkdu,xtagbk,ggsyipyr,xyyjrmuwknz,ucrirqazx,eoyhvukvuyiy,ezuqphtdz,lpgfuxzhlrg,elyhduochrfr,mlunqxinohbp,djjzcmtjhgcx,cwjzly,ukgpaymhlmmk,tviyrfvptbuh,hcqejyu,kghdfaw,hcqfsnzcid,elnniqujabl,gbggxmgz,gceqbxmus,lutodzjiegcx,mraqjxpvnvsu,auzoimurny,ozbqgp,docyqbovhfi,hlkqjiaxwr,vvwbkmqbq,xhzpgypuf,xfnefmjfkne,uqivzbou,mprsjjzkp,rxdmsfqozyu,vejfnyuwrahp,zfumhkr,rmexjuk,bdxrmgg,pfxmygcil,wmoubonqdcfzvi,dladmod,ngbnbyyehhxtdf,liawvte,ojfqbuteu,jgngcvyhqkxnzigr,syyfds,jydokcisk,biocdvdcv,vbrhpqxtut,hzawflyzpmyvv,mhocegyzvglfn,mrjpckp,eooejoxkoizodp,cypvbcuaunye,ekpqabnsxn,djgfoyyspoo,xtpzckesqw,digcamixk,jadgunvbrd,qlgykbw,ifmaln,ydimbx,powzcvwxhnpqgduhl,xbsghaufkpixmhb,ptabedebop,nkcyfokzxbvj,zzzmlsufcpmb,ugrijrpoqajdvng,shrhukqwn,uppbjmdap,grgcckxwxjvvasl";
+
+const larArr = lar.split(",");
+console.log(larArr);
+const kk = 112;
+
+console.log(longestConsec(larArr, kk));
+
+*/
