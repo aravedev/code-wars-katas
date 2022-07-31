@@ -3078,3 +3078,73 @@ const kk = 112;
 console.log(longestConsec(larArr, kk));
 
 */
+
+/*
+
+Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+It should remove all values from list a, which are present in list b keeping their order.
+
+arrayDiff([1,2],[1]) == [2]
+If a value is present in b, all of its occurrences must be removed from the other:
+
+arrayDiff([1,2,2,2,3],[2]) == [1,3]
+
+// My solution:
+function arrayDiff(a, b) {
+  
+  let result = [];
+
+  a.forEach((e) => {
+    if (!b.includes(e)) {
+      result.push(e);
+    }
+  });
+
+  return result;
+  
+}
+
+// Short solution from forum:
+function array_diff(a, b) {
+  b = new Set(b)
+  return a.filter(v => !b.has(v))
+}
+
+*/
+
+/*
+Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+
+For example (Input --> Output):
+
+39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
+999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
+4 --> 0 (because 4 is already a one-digit number)
+
+// My solution: Recursive function
+
+function persistence(num, count = 0) {
+  
+  // Convert num to string and split it
+  num = num.toString().split("");
+
+  // Chaging num from toString to Number again and returning as arr
+  num = num.map((e) => Number(e));
+
+  // we need to return how many times the recursion was done, until it reaches 1 digit.
+  if (num.length > 1) {
+    return persistence(
+      num.reduce((acc, sum) => acc * sum, 1),
+      count + 1
+    );
+  } else {
+
+    // if length is = 1, it means that we have only 1 digit in num array, so we return total count
+    return count;
+  }
+}
+
+console.log(persistence(39));
+
+*/
