@@ -3223,3 +3223,133 @@ function dividedBy(x) {
 }
 
 */
+
+/*
+Your task is to find the first element of an array that is not consecutive.
+
+By not consecutive we mean not exactly 1 larger than the previous element of the array.
+
+E.g. If we have an array [1,2,3,4,6,7,8] then 1 then 2 then 3 then 4 are all consecutive but 6 is not, so that's the first non-consecutive number.
+
+If the whole array is consecutive then return null2.
+
+The array will always have at least 2 elements1 and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
+
+If you like this Kata, maybe try this one next: https://www.codewars.com/kata/represent-array-of-numbers-as-ranges
+
+1 Can you write a solution that will return null2 for both [] and [ x ] though? (This is an empty array and one with a single number and is not tested for, but you can write your own example test. )
+
+// my solution:
+function firstNonConsecutive(arr) {
+  console.log(`arr is: ${arr}`);
+  let temp = 0;
+  let result = [];
+  let nextNumber = 0;
+
+  arr.forEach((e, index) => {
+    temp = e + 1;
+    nextNumber = arr[index + 1];
+
+    //console.log(`temp ${temp}`);
+    //console.log(`next number ${nextNumber}`);
+
+    if (temp !== nextNumber && nextNumber !== undefined) {
+      result.push(nextNumber);
+    }
+  });
+
+  return result.length > 0 ? result[0] : null;
+}
+
+let arr = [1, 2, 3];
+console.log(firstNonConsecutive(arr));
+
+solution forum:
+function firstNonConsecutive(arr) {
+  for (let i = 0; i < arr.length - 1; ++i) {
+    if (arr[i] + 1 !== arr[i + 1]) {
+      return arr[i + 1]
+    }
+  }
+  return null
+}
+
+*/
+/*
+You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
+If it is a square, return its area. If it is a rectangle, return its perimeter.
+
+Example(Input1, Input2 --> Output):
+
+6, 10 --> 32
+3, 3 --> 9
+Note: for the purposes of this kata you will assume that it is a square if its length and width are equal, otherwise it is a rectangle.
+
+// My solution:
+function areaOrPerimeter(l, w) {
+  console.log(l, w);
+  return l === w ? l * l : 2*l + 2*w;
+}
+*/
+
+/*
+
+Our football team finished the championship. The result of each match look like "x:y". Results of all matches are recorded in the collection.
+
+For example: ["3:1", "2:2", "0:1", ...]
+
+Write a function that takes such collection and counts the points of our team in the championship. Rules for counting points for each match:
+
+if x > y: 3 points
+if x < y: 0 point
+if x = y: 1 point
+Notes:
+
+there are 10 matches in the championship
+0 <= x <= 4
+0 <= y <= 4
+
+// my solution:
+
+function points(games) {
+  let result = [];
+  let total = 0;
+  result = games
+    .map((e) => e.split(":"))
+    .forEach((e) => {
+      if (+e[0] > +e[1]) {
+        total += 3;
+      } else if (+e[0] < +e[1]) {
+        total += 0;
+      } else {
+        total += 1;
+      }
+    });
+
+  return total;
+}
+
+let arr = [
+  "1:0",
+  "2:0",
+  "3:0",
+  "4:0",
+  "2:1",
+  "3:1",
+  "4:1",
+  "3:2",
+  "4:2",
+  "4:3",
+];
+console.log(points(arr));
+
+// forum solution: chaining ternary operator 
+
+function points(games) {
+  return games.reduce((current, element) => {
+    let arraySplit = element.split(':');
+    return (arraySplit[0] > arraySplit[1]) ? current += 3 : (arraySplit[0] < arraySplit[1]) ? current : current += 1;
+  }, 0);
+}
+
+*/
