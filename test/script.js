@@ -3353,3 +3353,115 @@ function points(games) {
 }
 
 */
+
+/*
+
+Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
+
+When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+
+Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
+
+S is misinterpreted as 5
+O is misinterpreted as 0
+I is misinterpreted as 1
+The test cases contain numbers only by mistake.
+
+// my solution:
+function correct(string) {
+  let str = string.split("");
+
+  str.forEach((e, index) => {
+    if (e === "0") {
+      str[index] = "O";
+    } else if (e === "1") {
+      str[index] = "I";
+    } else if (e === "5") {
+      str[index] = "S";
+    }
+  });
+
+  return str.join("");
+}
+
+const str = "L0ND0N";
+console.log(correct(str));
+
+// Solution forum
+
+function correct(string) {
+  const map = {
+    0: "O",
+    1: "I",
+    5: "S",
+  };
+
+  return string
+    .split("")
+    .map((c) => (map.hasOwnProperty(c) ? map[c] : c))
+    .join("");
+}
+
+console.log(correct("L0ND0N"));
+
+*/
+
+/*
+
+Make a function of BMI
+
+function bmi(weight, height) {
+  let result = weight / height ** 2;
+
+  if (result <= 18.5) {
+    return "Underweight";
+  } else if (result > 18.5 && result <= 25) {
+    return "Normal";
+  } else if (result > 25 && result <= 30) {
+    return "Overweight";
+  } else {
+    return "Obese";
+  }
+}
+
+console.log(bmi(80, 1.8));
+
+*/
+
+/*
+You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+
+Complete the method which accepts such an array, and returns that single different number.
+
+The input array will always be valid! (odd-length >= 3)
+
+Examples
+[1, 1, 2] ==> 2
+[17, 17, 3, 17, 17, 17, 17] ==> 3
+
+
+// My solution:
+function stray(numbers) {
+  let arrNumbers = new Set(numbers);
+  arrNumbers = [...arrNumbers];
+  let result = 0;
+  let largest = 0;
+  let temp = 0;
+
+  arrNumbers.forEach((unique) => {
+    result = numbers.filter((e) => e === unique).length;
+
+    if (result > temp) {
+      temp = result;
+      largest = unique;
+    }
+    //console.log(`largest is : ${largest}`);
+  });
+
+  return Number(numbers.filter((e) => e !== largest).join(""));
+  console.log(temp);
+}
+
+const arr = [1, 1, 2];
+console.log(stray(arr));
+*/
