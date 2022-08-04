@@ -3465,3 +3465,150 @@ function stray(numbers) {
 const arr = [1, 1, 2];
 console.log(stray(arr));
 */
+
+/*
+
+Create a function with two arguments that will return an array of the first (n) multiples of (x).
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array (or list in Python, Haskell or Elixir).
+
+Examples:
+
+countBy(1,10) === [1,2,3,4,5,6,7,8,9,10]
+countBy(2,5) === [2,4,6,8,10]
+
+// My solution:
+function countBy(x, n) {
+  let arr = [];
+  for (let i = 1; i <= n; i++) {
+    arr.push(x * i);
+  }
+  return arr;
+}
+
+console.log(countBy(2, 5));
+
+
+*/
+
+/*
+
+Rock Paper Scissors
+Let's play! You have to return which player won! In case of a draw return Draw!.
+
+Examples(Input1, Input2 --> Output):
+
+"scissors", "paper" --> "Player 1 won!"
+"scissors", "rock" --> "Player 2 won!"
+"paper", "paper" --> "Draw!"
+
+const rps = (p1, p2) => {
+  if (p1 === "scissors" && p2 === "paper") {
+    return "Player 1 won!";
+  } else if (p1 === "rock" && p2 === "scissors") {
+    return "Player 1 won!";
+  } else if (p1 === "paper" && p2 === "rock") {
+    return "Player 1 won!";
+  } else if (p1 === p2) {
+    return "Draw!";
+  } else {
+    return "Player 2 won!";
+  }
+};
+
+console.log(rps("rock", "scissors"));
+
+
+// Forum solution 
+
+const rps = (p1, p2) => {
+  var map = {
+    'rock': 'scissors',
+    'scissors': 'paper',
+    'paper': 'rock'
+  };
+  
+  if (p1 == p2) {
+    return 'Draw!';
+  } else {
+    return 'Player ' + (map[p1] == p2 ? 1 : 2) + ' won!';
+  }
+};
+
+*/
+
+/*
+This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
+
+function simpleMultiplication(number) {
+  return number % 2 === 0 ? number * 8 : number * 9;
+}
+
+console.log(simpleMultiplication(3));
+
+*/
+
+/*
+A hero is on his way to the castle to complete his mission. However, he's been told that the castle is surrounded with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another specific given number of dragons, will he survive?
+
+Return True if yes, False otherwise :)
+
+function hero(bullets, dragons) {
+  return dragons * 2 <= bullets ? true : false;
+}
+
+*/
+
+/*
+
+Your task is to create the functionisDivideBy (or is_divide_by) to check if an integer number is divisible by both integers a and b.
+
+A few cases:
+
+
+(-12, 2, -6)  ->  true
+(-12, 2, -5)  ->  false
+
+(45, 1, 6)    ->  false
+(45, 5, 15)   ->  true
+
+(4, 1, 4)     ->  true
+(15, -5, 3)   ->  true
+
+// My solution:
+function isDivideBy(number, a, b) {
+  return number % a === 0 && number % b === 0 ? true : false;
+}
+console.log(isDivideBy(-12, 2, 4));
+
+
+*/
+
+/*
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+Examples:
+Input: 42145 Output: 54421
+
+Input: 145263 Output: 654321
+
+Input: 123456789 Output: 987654321
+
+// My solution:
+function descendingOrder(n) {
+  let arr = n.toString().split("");
+
+  if (arr.length === 1) {
+    return n;
+  } else {
+    arr = arr.map((e) => Number(e));
+    arr = arr.sort((a, b) => b - a);
+    return Number(arr.join(""));
+  }
+}
+
+console.log(descendingOrder(1));
+
+*/
