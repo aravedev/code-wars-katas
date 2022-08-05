@@ -3612,3 +3612,73 @@ function descendingOrder(n) {
 console.log(descendingOrder(1));
 
 */
+
+/*
+Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
+
+Write a function which takes a list of strings and returns each line prepended by the correct number.
+
+The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+
+Examples: (Input --> Output)
+
+[] --> []
+["a", "b", "c"] --> ["1: a", "2: b", "3: c"]
+
+// My solution:
+
+function number(array) {
+  return array.map((e, index) => `${index + 1}: ${e}`);
+}
+
+const arr = ["a", "b", "c"];
+
+console.log(number(arr));
+*/
+
+/*
+Count the number of divisors of a positive integer n.
+
+Random tests go up to n = 500000.
+
+Examples (input --> output)
+4 --> 3 (1, 2, 4)
+5 --> 2 (1, 5)
+12 --> 6 (1, 2, 3, 4, 6, 12)
+30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
+
+//My solution:
+function getDivisorsCnt(n) {
+  let counter = 0;
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      counter++;
+    }
+  }
+  return counter;
+}
+
+console.log(getDivisorsCnt(5));
+*/
+
+/*
+Take an array and remove every second element from the array. Always keep the first element and start removing with the next element.
+
+Example:
+["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
+
+None of the arrays will be empty, so you don't have to worry about that!
+
+// My solution:
+function removeEveryOther(arr) {
+  let result = [];
+  for (let i = 0; i < arr.length; i = i + 2) {
+    result.push(arr[i]);
+  }
+
+  return result;
+}
+
+const str = [["Goodbye"], { Great: "Job" }];
+console.log(removeEveryOther(str));
+*/
