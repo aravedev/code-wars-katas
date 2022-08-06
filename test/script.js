@@ -3682,3 +3682,90 @@ function removeEveryOther(arr) {
 const str = [["Goodbye"], { Great: "Job" }];
 console.log(removeEveryOther(str));
 */
+
+/*
+Bob is working as a bus driver. However, he has become extremely popular amongst the city's residents. With so many passengers wanting to get aboard his bus, he sometimes has to face the problem of not enough space left on the bus! He wants you to write a simple program telling him if he will be able to fit all the passengers.
+
+Task Overview:
+You have to write a function that accepts three parameters:
+
+cap is the amount of people the bus can hold excluding the driver.
+on is the number of people on the bus excluding the driver.
+wait is the number of people waiting to get on to the bus excluding the driver.
+If there is enough space, return 0, and if there isn't, return the number of passengers he can't take.
+
+Usage Examples:
+cap = 10, on = 5, wait = 5 --> 0 # He can fit all 5 passengers
+cap = 100, on = 60, wait = 50 --> 10 # He can't fit 10 of the 50 waiting
+
+//My solution:
+function enough(cap, on, wait) {
+  let seats = cap - on;
+  let onPassengers = cap - on;
+
+  return seats > wait ? 0 : wait - seats;
+}
+
+console.log(enough(20, 5, 5));
+*/
+
+/*
+All of the animals are having a feast! Each animal is bringing one dish. There is just one rule: the dish must start and end with the same letters as the animal's name. For example, the great blue heron is bringing garlic naan and the chickadee is bringing chocolate cake.
+
+Write a function feast that takes the animal's name and dish as arguments and returns true or false to indicate whether the beast is allowed to bring the dish to the feast.
+
+Assume that beast and dish are always lowercase strings, and that each has at least two letters. beast and dish may contain hyphens and spaces, but these will not appear at the beginning or end of the string. They will not contain numerals.
+
+// My solution:
+function feast(beast, dish) {
+  return beast[0] === dish[0] &&
+    beast[beast.length - 1] === dish[dish.length - 1]
+    ? true
+    : false;
+}
+
+console.log(feast("brown bear", "bear claw"));
+*/
+
+/*
+
+The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+What if the string is empty? Then the result should be empty object literal, {}.
+
+// My solution:
+
+function count(string) {
+  if (string.length > 0) {
+    let phrase = string.split("");
+    let str = string.split("");
+    str = new Set(str);
+    str = [...str];
+
+    let obj = {};
+
+    str.forEach((e) => {
+      let result = phrase.filter((l) => l == e).length;
+      obj[e] = result;
+    });
+
+    return obj;
+  } else {
+    return {};
+  }
+}
+
+console.log(count(""));
+console.log(count("aba"));
+
+// Forum solution:
+
+function count (string) {  
+  var count = {};
+  string.split('').forEach(function(s) {
+     count[s] ? count[s]++ : count[s] = 1;
+  });
+  return count;
+}
+
+*/
