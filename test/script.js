@@ -3769,3 +3769,106 @@ function count (string) {
 }
 
 */
+
+/*
+
+You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.
+
+For example:
+
+Let's say you are given the array {1,2,3,4,3,2,1}:
+Your function will return the index 3, because at the 3rd position of the array, the sum of left side of the index ({1,2,3}) and the sum of the right side of the index ({3,2,1}) both equal 6.
+
+Let's look at another one.
+You are given the array {1,100,50,-51,1,1}:
+Your function will return the index 1, because at the 1st position of the array, the sum of left side of the index ({1}) and the sum of the right side of the index ({50,-51,1,1}) both equal 1.
+
+Last one:
+You are given the array {20,10,-80,10,10,15,35}
+At index 0 the left side is {}
+The right side is {10,-80,10,10,15,35}
+They both are equal to 0 when added. (Empty arrays are equal to 0 in this problem)
+Index 0 is the place where the left side and right side are equal.
+
+Note: Please remember that in most programming/scripting languages the index of an array starts at 0.
+
+Input:
+An integer array of length 0 < arr < 1000. The numbers in the array can be any integer positive or negative.
+
+Output:
+The lowest index N where the side to the left of N is equal to the side to the right of N. If you do not find an index that fits these rules, then you will return -1.
+
+Note:
+If you are given an array with multiple answers, return the lowest correct index.
+
+// My solution:
+
+function findEvenIndex(arr, a = [], b = 0, counter = 0) {
+  let sumArr1 = 0;
+  let sumArr2 = 0;
+  let originalArr = 0;
+  //console.log(`input was ${arr}`);
+
+  if (arr.length > 1) {
+    counter = counter + 1;
+    let temp = arr.shift();
+    a.push(temp);
+
+    for (let i = 1; i < arr.length; i++) {
+      sumArr1 = sumArr1 + arr[i];
+    }
+    sumArr2 = a.reduce((acc, sum) => acc + sum, 0);
+    //console.log(`arr A is: ${a} and its sum is ${sumArr2}`);
+    //console.log(`arr is: ${arr} and its sum is ${sumArr1}`);
+
+    if (sumArr1 == sumArr2) {
+      //console.log(`sumArr1 is: ${sumArr1}`);
+      //console.log(`sumArr2 is: ${sumArr2}`);
+      return counter;
+    } else {
+      return findEvenIndex(arr, a, sumArr2, counter);
+    }
+  } else {
+    //
+
+    temp = arr[0];
+    a.push(temp);
+
+    for (let i = 1; i < a.length; i++) {
+      originalArr = originalArr + a[i];
+    }
+
+    if (originalArr === 0) {
+      // console.log(`last one ${a} is 0`);
+      return 0;
+    } else {
+      //
+      // console.log(`arr only has 1 number and it is ${arr}`);
+      return -1;
+    }
+  }
+}
+
+//const arr = [1, 2, 3, 4, 5, 6];
+//const arr = [1, 100, 50, -51, 1, 1];
+//const arr = [1, 2, 3, 4, 3, 2, 1]; // resp is 4
+//const arr = [20, 10, 30, 10, 10, 15, 35];
+const arr = [20, 10, -80, 10, 10, 15, 35];
+console.log(findEvenIndex(arr));
+
+// Refactoring my solution: One of the hardest katas that I have done, i had to sleep like 3 times thinking using recursion, but this refactor solution proves you that isnt necessary always use
+recurtion
+
+function findEvenIndex(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let sumRigth = arr.slice(0, i).reduce((acc, sum) => acc + sum, 0);
+    let sumLeft = arr.slice(i + 1).reduce((acc, sum) => acc + sum, 0);
+
+    if (sumLeft === sumRigth) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+*/
