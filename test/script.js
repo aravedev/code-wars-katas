@@ -3872,3 +3872,177 @@ function findEvenIndex(arr) {
 }
 
 */
+
+/*
+altERnaTIng cAsE <=> ALTerNAtiNG CaSe
+altERnaTIng cAsE <=> ALTerNAtiNG CaSe
+Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase. For example:
+
+"hello world".toAlternatingCase() === "HELLO WORLD"
+"HELLO WORLD".toAlternatingCase() === "hello world"
+"hello WORLD".toAlternatingCase() === "HELLO world"
+"HeLLo WoRLD".toAlternatingCase() === "hEllO wOrld"
+"12345".toAlternatingCase() === "12345" // Non-alphabetical characters are unaffected
+"1a2b3c4d5e".toAlternatingCase() === "1A2B3C4D5E"
+"String.prototype.toAlternatingCase".toAlternatingCase() === "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
+As usual, your function/method should be pure, i.e. it should not mutate the original string.
+
+// My solution:
+
+String.prototype.toAlternatingCase = function () {
+  let str = this.split("");
+  let result = str.map((e, index) => {
+    if (e === e.toLowerCase()) {
+      return (e[index] = e.toUpperCase());
+    } else {
+      return (e[index] = e.toLowerCase());
+    }
+  });
+
+  return result.join("");
+};
+console.log("hELLO".toAlternatingCase());
+*/
+
+/*
+You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
+
+Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
+
+For example, when the input is green, output should be yellow.
+
+//My solution
+function updateLight(current) {
+  
+ return current === "green"? "yellow": current==="yellow"? "red":"green"
+
+}
+
+// forum solution:
+const updateLight = current => ({
+  green: 'yellow',
+  yellow: 'red',
+  red: 'green',
+})[current]
+
+*/
+/*
+function incrementString(strng) {
+  console.log(strng);
+  let temp = [];
+  strng.split("").forEach((e) => {
+    if (!isNaN(e)) {
+      temp.push(e);
+    }
+  });
+
+  //temp = temp.join("");
+  const lengthTemp = temp.length;
+
+  let tempTotalZeros = temp.filter((e) => e == 0).length;
+
+  if (tempTotalZeros === lengthTemp) {
+    if (temp.join("").includes("0")) {
+      let tempPreviousValue = temp.join("");
+      let newValue = +temp[temp.length - 1] + 1;
+      temp[temp.length - 1] = newValue.toString();
+
+      temp = temp.join("");
+      console.log(`temp if : ${temp}`);
+
+      return strng.replace(tempPreviousValue, temp);
+    } else {
+      let newValue = (Number(temp.join("")) + 1).toString();
+
+      return strng + newValue;
+    }
+  } else {
+    let newValue = (Number(temp.join("")) + 1).toString();
+    console.log(newValue);
+    temp = temp.join("");
+    console.log(`total zeros: ${tempTotalZeros}`);
+    console.log(`temp else statement: ${temp}`);
+
+    if (+newValue < 100 && +newValue > 10) {
+      temp = temp.substring(1, 3);
+      console.log(temp);
+
+      //
+      return strng.replace(temp, newValue);
+      //
+    } else if (+newValue < 10 && +newValue > 0) {
+      temp = temp.split("");
+      let prev = temp.join("");
+      temp[temp.length - 1] = newValue;
+      newValue = temp.join("");
+      //console.log(newValue);
+      //console.log(prev);
+      return strng.replace(prev, newValue);
+    }
+  }
+}
+
+//
+*/
+
+/*
+
+Your job is to write a function which increments a string, to create a new string.
+
+If the string already ends with a number, the number should be incremented by 1.
+If the string does not end with a number. the number 1 should be appended to the new string.
+Examples:
+
+foo -> foo1
+
+foobar23 -> foobar24
+
+foo0042 -> foo0043
+
+foo9 -> foo10
+
+foo099 -> foo100
+
+Attention: If the number has leading zeros the amount of digits should be considered.
+
+// My solution:
+function incrementString(strng) {
+  console.log(strng);
+  let result = strng.split("");
+  let temp = [];
+  result.forEach((e) => {
+    if (!isNaN(e)) {
+      temp.push(e);
+    }
+  });
+
+  # Taking only the letters
+  
+  let newValue = +temp.join("") + 1;
+  let length = newValue.toString().length;
+  let str = strng.length - temp.length;
+  let newStr = strng.substring(0, str);
+
+  // ahora con los #s
+
+  if (temp.length > newValue.toString().length) {
+    console.log("here");
+    let position = temp.length - newValue.toString().length;
+    temp = temp.join("");
+    temp = temp.substring(0, position);
+    temp = temp + newValue;
+    console.log(`ahora temp es : ${temp}`);
+  } else {
+    temp = newValue.toString();
+    console.log("equal length");
+  }
+
+  return newStr + temp;
+}
+
+const str = "";
+
+console.log(incrementString(str));
+
+
+*/
