@@ -4155,4 +4155,15 @@ function breakerCamelCase(string) {
 const str = "camelCasingTest";
 console.log(breakerCamelCase(str));
 
+// forum solution: using map
+function solution(string) {
+  string = string.split('').map(function (el) {
+    if (el === el.toUpperCase()) {
+      el = ' ' + el
+    }
+    return el
+  })
+  return string.join('')
+}
+
 */
