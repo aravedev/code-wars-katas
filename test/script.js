@@ -4126,6 +4126,33 @@ console.log(finalGrade(55, 0));
 
 */
 
-//100, 12 --> 100
-//99, 0 --> 100
-//10, 15 --> 100
+/*
+Complete the solution so that the function will break up camel casing, using a space between words.
+
+Example
+"camelCasing"  =>  "camel Casing"
+"identifier"   =>  "identifier"
+""             =>  ""
+
+//my solution:
+
+function breakerCamelCase(string) {
+  let result = string.split("");
+  let temp = [];
+
+  result.forEach((e, index) => {
+    if (e !== e.toUpperCase()) {
+      temp.push(e);
+    } else {
+      temp.push(" " + e);
+      // result.splice(index, 0, " ");
+    }
+  });
+
+  return temp.join("");
+}
+
+const str = "camelCasingTest";
+console.log(breakerCamelCase(str));
+
+*/
