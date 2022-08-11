@@ -4235,3 +4235,66 @@ function minMax(arr) {
 console.log(minMax([1]));
 
 */
+
+/*
+
+All Star Code Challenge #18
+
+Create a function that accepts 2 string arguments and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+
+If no occurrences can be found, a count of 0 should be returned.
+
+("Hello", "o")  ==>  1
+("Hello", "l")  ==>  2
+("", "z")       ==>  0
+
+
+// My solution:
+function strCount(str, letter) {
+  return str.split("").filter((e) => e == letter).length;
+}
+
+console.log(strCount("Hello", "o"));
+
+
+*/
+
+/*
+
+In this simple exercise, you will create a program that will take two lists of integers, a and b. Each list will consist of 3 positive integers above 0, representing the dimensions of cuboids a and b. You must find the difference of the cuboids' volumes regardless of which is bigger.
+
+For example, if the parameters passed are ([2, 2, 3], [5, 4, 1]), the volume of a is 12 and the volume of b is 20. Therefore, the function should return 8.
+
+Your function will be tested with pre-made examples as well as random ones.
+
+If you can, try writing it in one line of code.
+
+// My solution:
+function findDifference(a, b) {
+  let volA = a.reduce((acc, sum) => acc * sum, 1);
+  let volB = b.reduce((acc, sum) => acc * sum, 1);
+
+  return Math.abs(volA - volB);
+}
+
+console.log(findDifference([9, 7, 2], [5, 2, 2]));
+
+*/
+
+/*
+
+In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+
+// My solution:
+function filter_list(l) {
+  return l.filter((e) => !isNaN(e) && typeof e !== "string");
+}
+
+console.log(filter_list([1, 2, "aasf", "1", "123", 123]));
+
+*/
