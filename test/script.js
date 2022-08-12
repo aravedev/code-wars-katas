@@ -4298,3 +4298,123 @@ function filter_list(l) {
 console.log(filter_list([1, 2, "aasf", "1", "123", 123]));
 
 */
+/*
+function queueTime(customers, n) {
+  let arr = [];
+
+  if (customers.length === 0) {
+    return 0;
+  } else if (n === 1) {
+    return customers.reduce((acc, sum) => acc + sum);
+  }
+
+  ////
+  else if (customers.length < n) {
+    return Math.max(...customers);
+  }
+
+  ////
+  else if (customers.length > 0) {
+    customers.forEach((c, index) => {
+      if (arr.length < n) {
+        arr.push(c);
+      } else if (arr.length === n) {
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
+        let indexMin = arr.indexOf(min)
+        let indexMax = arr.indexOf(max)
+
+        if(indexMax === indexMin){
+        
+          
+        
+        }
+
+      
+
+        ////
+
+        console.log(`arr Max is: ${max}`);
+        console.log(`arr Min is: ${min}`);
+        console.log(`arr c is: ${c}`);
+        //console.log(`arr Index of Min is: ${indexMinArr}`);
+        //console.log(`arr Index of Max is: ${indexMaxArr}`);
+
+        if (c <= max) {
+          min = c + min;
+          // arr[indexMinArr] = min;
+          console.log(`nuevo arr Min is: ${min}`);
+        } else if (min >= max) {
+          max = Math.max(...arr);
+          min = Math.min(...arr);
+          min = c + min;
+          indexMinArr = arr.indexOf(min);
+          arr[indexMinArr] = min;
+        }
+      }
+    });
+  }
+
+  //console.log(`arr is: ${arr}`);
+}
+*/
+
+/*
+
+input
+customers: an array of positive integers representing the queue. Each integer represents a customer, and its value is the amount of time they require to check out.
+n: a positive integer, the number of checkout tills.
+output
+The function should return an integer, the total time required.
+
+Important
+Please look at the examples and clarifications below, to ensure you understand the task correctly :)
+
+Examples
+queueTime([5,3,4], 1)
+// should return 12
+// because when there is 1 till, the total time is just the sum of the times
+
+queueTime([10,2,3,3], 2)
+// should return 10
+// because here n=2 and the 2nd, 3rd, and 4th people in the 
+// queue finish before the 1st person has finished.
+
+queueTime([2,3,10], 2)
+// should return 12
+Clarifications
+There is only ONE queue serving many tills, and
+The order of the queue NEVER changes, and
+The front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as it becomes free.
+N.B. You should assume that all the test input will be valid, as specified above.
+
+// My solution:
+
+function queueTime(customers, n) {
+  let arr = [];
+
+  if (customers.length == 0) {
+    return 0;
+  } else if (customers.length < n) {
+    return Math.max(...customers);
+  } else if (customers.length === n) {
+    return customers.reduce((acc, sum) => acc + sum);
+  } else {
+    customers.forEach((c) => {
+      if (arr.length < n) {
+        arr.push(c);
+      } else {
+        let min = Math.min(...arr);
+        let indexMin = arr.indexOf(min);
+        arr[indexMin] = c + min;
+        let max = Math.max(...arr);
+      }
+    });
+
+    return Math.max(...arr);
+  }
+}
+
+console.log(queueTime([1, 2, 3, 4, 5], 100));
+
+*/
