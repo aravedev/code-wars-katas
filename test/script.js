@@ -4418,3 +4418,96 @@ function queueTime(customers, n) {
 console.log(queueTime([1, 2, 3, 4, 5], 100));
 
 */
+
+/*
+Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
+
+For example, if this array were passed as an argument:
+
+["Telescopes", "Glasses", "Eyes", "Monocles"]
+
+Your function would return the following array:
+
+["Eyes", "Glasses", "Monocles", "Telescopes"]
+
+All of the strings in the array passed to your function will be different lengths, so you will not have to decide how to order multiple strings of the same length.
+
+// My solution:
+function sortByLength(array) {
+  let length = [];
+  let arr = [];
+
+  length = array.map((e) => e.length).sort((a, b) => a - b);
+
+  length.forEach((e) => {
+    array.filter((word, index) => {
+      if (word.length === e) {
+        arr.push(word);
+      }
+    });
+  });
+
+  return arr;
+
+  
+};
+}
+
+// Besto answer:
+
+function sortByLength(array) {
+  let copyArr = array;
+  return copyArr.sort((a, b) => a.length - b.length);
+}
+
+const arr = ["Beg", "Life", "I", "To", "To"];
+console.log(sortByLength(arr));
+  
+
+const arr = ["Beg", "Life", "I", "To"];
+console.log(sortByLength(arr));
+*/
+
+/*
+
+Explanation:
+After placing signs and brackets, the Maximum value obtained from the expression is 9 * (1+1) = 18. ___# Task
+
+Given three integers a ,b ,c, return the largest number obtained after inserting the following operators and brackets: +, *, ()
+In other words , try every combination of a,b,c with [*+()] , and return the Maximum Obtained
+Example
+With the numbers are 1, 2 and 3 , here are some ways of placing signs and brackets:
+
+1 * (2 + 3) = 5
+1 * 2 * 3 = 6
+1 + 2 * 3 = 7
+(1 + 2) * 3 = 9
+So the maximum value that you can obtain is 9.
+
+
+// My solution:
+
+function expressionMatter(a, b, c) {
+  let result = [];
+
+  let A = a * b * c;
+  result.push(A);
+
+  let B = a * (b + c);
+  result.push(B);
+
+  let C = a + b * c;
+  result.push(C);
+
+  let D = (a + b) * c;
+  result.push(D);
+
+  let E = a + b + c;
+  result.push(E);
+
+  return Math.max(...result);
+}
+
+console.log(expressionMatter(2, 1, 2));
+
+*/
