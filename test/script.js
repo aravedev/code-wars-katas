@@ -4511,3 +4511,128 @@ function expressionMatter(a, b, c) {
 console.log(expressionMatter(2, 1, 2));
 
 */
+
+/*
+
+Count the number of Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice
+
+// My solution :
+
+function duplicateCount(text) {
+  let str = text.toLowerCase().split("");
+  let length = 0;
+  let counter = 0;
+
+  let zeroDuplicates = new Set(str);
+  zeroDuplicates = [...zeroDuplicates];
+
+  zeroDuplicates.forEach((e) => {
+    length = str.filter((letter) => letter == e).length;
+
+    if (length > 1) {
+      counter++;
+    }
+  });
+
+  return counter;
+}
+
+const str = "Indivisibilities";
+
+console.log(duplicateCount(str));
+
+
+// Forum solution using hash map: I liked it
+
+function duplicateCount(text){
+  
+  var input = text.toLowerCase().split('');
+  
+  var obj = {};
+  
+  for( var i in input) {
+    
+    if(!obj[ input[i] ]){
+      
+      obj[ input[i] ] = 1;
+      
+    } else{
+      obj[ input[i] ] += 1;
+    } 
+  }
+  
+  var result = 0;
+  
+  for( var prop in obj) {
+    
+    if(obj[prop] > 1){
+     result++;
+    }
+  }
+  
+  return result;
+  
+}
+
+*/
+
+/*
+
+Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does, he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+
+The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+
+Note to Tax: not the invested principal is taxed, but only the year's accrued interest
+
+Example:
+
+  Let P be the Principal = 1000.00      
+  Let I be the Interest Rate = 0.05      
+  Let T be the Tax Rate = 0.18      
+  Let D be the Desired Sum = 1100.00
+
+
+After 1st Year -->
+  P = 1041.00
+After 2nd Year -->
+  P = 1083.86
+After 3rd Year -->
+  P = 1128.30
+Thus Mr. Scrooge has to wait for 3 years for the initial principal to amount to the desired sum.
+
+Your task is to complete the method provided and return the number of years 'Y' as a whole in order for Mr. Scrooge to get the desired sum.
+
+Assumption: Assume that Desired Principal 'D' is always greater than the initial principal. However it is best to take into consideration that if Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.
+
+// My solution:
+
+
+function calculateYears(principal, interest, tax, desired, count = 1) {
+  
+  let increaseAmount = principal * interest;
+  let taxesIncome = increaseAmount * tax;
+  let gain = principal + increaseAmount - taxesIncome;
+
+  if (principal === desired) {
+    return 0;
+  } else if (gain >= desired) {
+    return count;
+  } else {
+    count++;
+    return calculateYears(gain, interest, tax, desired, count);
+  }
+}
+
+console.log(calculateYears(1000, 0.05, 0.18, 1100));
+
+*/
