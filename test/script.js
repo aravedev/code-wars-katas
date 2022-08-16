@@ -4636,3 +4636,99 @@ function calculateYears(principal, interest, tax, desired, count = 1) {
 console.log(calculateYears(1000, 0.05, 0.18, 1100));
 
 */
+
+/*
+Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
+
+function removeExclamationMarks(s) {
+  return s
+    .split("")
+    .filter((e) => e !== "!")
+    .join("");
+}
+
+const str = "Hello! world!!";
+console.log(removeExclamationMarks(str));
+
+*/
+
+/*
+You will be given a list of strings. You must sort it alphabetically (case-sensitive, and based on the ASCII values of the chars) and then return the first value.
+
+The returned value must be a string, and have "***" between each of its letters.
+
+You should not remove or add elements from/to the array.
+
+//My solution:
+
+function twoSort(s) {
+  let result = s
+    .sort()[0]
+    .split("")
+    .map((e) => e + "***")
+    .join("");
+
+  return result.substring(0, result.length - 3);
+}
+
+const str = [
+  "bitcoin",
+  "take",
+  "over",
+  "the",
+  "world",
+  "maybe",
+  "who",
+  "knows",
+  "perhaps",
+];
+console.log(twoSort(str));
+
+
+// Forum solution:
+function twoSort(s) {
+  return s.sort()[0].split('').join('***');
+}
+
+*/
+
+/*
+
+Write Number in Expanded Form
+You will be given a number and you will need to return it as a string in Expanded Form. For example:
+
+expandedForm(12); // Should return '10 + 2'
+expandedForm(42); // Should return '40 + 2'
+expandedForm(70304); // Should return '70000 + 300 + 4'
+NOTE: All numbers will be whole numbers greater than 0.
+
+// My solution: 
+
+function expandedForm(num, arr = []) {
+  console.log(num);
+  let n = num.toString();
+  let exp = n.length - 1;
+
+  let copyNum = num;
+
+  let result = copyNum % 10 ** exp;
+
+  if (result === 0) {
+    arr.push(copyNum);
+  } else {
+    arr.push(copyNum - result);
+  }
+
+  if (exp === 0) {
+    return arr.filter((e) => e !== 0).join(" + ");
+  } else {
+    console.log(` result is ${result}`);
+    console.log(`exp is ${exp}`);
+    return expandedForm(result, arr);
+  }
+}
+
+const n = 70304;
+console.log(expandedForm(n));
+
+*/
