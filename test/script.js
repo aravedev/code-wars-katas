@@ -4732,3 +4732,42 @@ const n = 70304;
 console.log(expandedForm(n));
 
 */
+
+/*
+Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+For example:
+
+uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+
+// My solution:
+
+function uniqueInOrder(iterable) {
+  let arr = iterable;
+  let uniqueArr = [];
+  let temp = "";
+
+  arr = typeof arr === "string" ? arr.split("") : arr;
+
+  uniqueArr = arr.map((e) => {
+    if (e !== temp) {
+      temp = e;
+      return e;
+    }
+  });
+
+  return uniqueArr.filter((e) => e !== undefined);
+}
+
+//const arr = "ABBCcAD";
+const arr = [1, 2, 2, 3, 3];
+console.log(uniqueInOrder(arr));
+
+// forum solution:
+var uniqueInOrder=function(iterable){
+    return [...iterable].filter((a, i) => a !== iterable[i-1])
+}
+
+*/
