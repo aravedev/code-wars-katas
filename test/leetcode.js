@@ -168,7 +168,7 @@ var twoSum = function (nums, target) {
 };
 
 */
-
+/*
 const nums = [2, 7, 11, 15];
 const target = 20;
 
@@ -180,3 +180,48 @@ const ob = {
 };
 
 console.log(ob[3]);
+*/
+
+/*
+
+rank: easy
+
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: true
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: false
+Example 3:
+
+Input: nums = [1,1,1,3,3,4,3,2,4,2]
+Output: true
+
+// My solution:
+var containsDuplicate = function (nums) {
+  let obj = {};
+
+  nums.forEach((e) => {
+    if (e in obj) {
+      obj[e] = true;
+    } else {
+      obj[e] = false;
+    }
+  });
+
+  let result = Object.keys(obj).some((e) => obj[e] === true);
+  return result;
+};
+
+const nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
+console.log(containsDuplicate(nums));
+
+
+Note:
+Runtime: 231 ms, faster than 22.68% of JavaScript online submissions for Contains Duplicate.
+Memory Usage: 54.3 MB, less than 6.02% of JavaScript online submissions for Contains Duplicate.
+*/
