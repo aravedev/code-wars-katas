@@ -225,3 +225,74 @@ Note:
 Runtime: 231 ms, faster than 22.68% of JavaScript online submissions for Contains Duplicate.
 Memory Usage: 54.3 MB, less than 6.02% of JavaScript online submissions for Contains Duplicate.
 */
+
+/*
+Rank: easy
+  Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+ 
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+Example 2:
+
+Input: s = "rat", t = "car"
+Output: false
+
+// My solution:
+
+var isAnagram = function (s, t) {
+  objS = {};
+  objT = {};
+  let str = s.split("");
+  let check = t.split("");
+
+  if (str.length === check.length) {
+    str.forEach((e) => {
+      if (!objS.hasOwnProperty(e)) {
+        objS[e] = 1;
+      } else {
+        objS[e] = objS[e] + 1;
+      }
+    });
+
+    check.forEach((char) => {
+      if (!objT.hasOwnProperty(char)) {
+        objT[char] = 1;
+      } else {
+        objT[char] = objT[char] + 1;
+      }
+    });
+
+    let obj2 = Object.keys(objT)
+      .sort()
+      .reduce((acc, key) => {
+        acc[key] = objT[key];
+        return acc;
+      }, {});
+
+    let obj1 = Object.keys(objS)
+      .sort()
+      .reduce((acc, key) => {
+        acc[key] = objS[key];
+        return acc;
+      }, {});
+
+    return Object.entries(obj2).toString() === Object.entries(obj1).toString();
+  } else {
+    return false;
+  }
+};
+
+const st = "a";
+const t = "ab";
+console.log(isAnagram(st, t));
+
+// Details:
+Runtime: 114 ms, faster than 64.17% of JavaScript online submissions for Valid Anagram.
+Memory Usage: 44.8 MB, less than 41.26% of JavaScript online submissions for Valid Anagram.
+*/
