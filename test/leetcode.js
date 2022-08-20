@@ -243,7 +243,10 @@ Example 2:
 Input: s = "rat", t = "car"
 Output: false
 
-// My solution:
+// My solution 1:
+// https://bobbyhadz.com/blog/javascript-sort-object-keys
+//https://www.samanthaming.com/tidbits/33-how-to-compare-2-objects/
+//https://www.javascripttutorial.net/object/javascript-check-if-property-exists/
 
 var isAnagram = function (s, t) {
   objS = {};
@@ -292,7 +295,138 @@ const st = "a";
 const t = "ab";
 console.log(isAnagram(st, t));
 
+
+// My solution 2:
+
+var isAnagram = function (s, t) {
+  objS = {};
+  objT = {};
+  let str = s.split("").sort();
+  let check = t.split("").sort();
+
+  if (str.length === check.length) {
+    str.forEach((e) => {
+      if (!objS.hasOwnProperty(e)) {
+        objS[e] = 1;
+      } else {
+        objS[e] = objS[e] + 1;
+      }
+    });
+
+    check.forEach((char) => {
+      if (!objT.hasOwnProperty(char)) {
+        objT[char] = 1;
+      } else {
+        objT[char] = objT[char] + 1;
+      }
+    });
+
+    return Object.entries(objT).toString() === Object.entries(objS).toString();
+  } else {
+    return false;
+  }
+};
+
 // Details:
 Runtime: 114 ms, faster than 64.17% of JavaScript online submissions for Valid Anagram.
 Memory Usage: 44.8 MB, less than 41.26% of JavaScript online submissions for Valid Anagram.
+*/
+
+/*
+var isAnagram = function (s, t) {
+  objS = {};
+  objT = {};
+  let str = s.split("");
+  let check = t.split("");
+
+  if (str.length === check.length) {
+    str.forEach((e) => {
+      if (!objS.hasOwnProperty(e)) {
+        objS[e] = 1;
+      } else {
+        objS[e] = objS[e] + 1;
+      }
+    });
+
+    check.forEach((char) => {
+      if (!objT.hasOwnProperty(char)) {
+        objT[char] = 1;
+      } else {
+        objT[char] = objT[char] + 1;
+      }
+    });
+
+    let obj2 = Object.keys(objT)
+      .sort()
+      .reduce((acc, key) => {
+        acc[key] = objT[key];
+        return acc;
+      }, {});
+
+    let obj1 = Object.keys(objS)
+      .sort()
+      .reduce((acc, key) => {
+        acc[key] = objS[key];
+        return acc;
+      }, {});
+
+    return Object.entries(obj2).toString() === Object.entries(obj1).toString();
+  } else {
+    return false;
+  }
+};
+
+const st = "a";
+const t = "ab";
+console.log(isAnagram(st, t));
+
+*/
+
+/*
+
+49. Group Anagrams
+
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+ 
+
+Example 1:
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+Example 2:
+
+Input: strs = [""]
+Output: [[""]]
+Example 3:
+
+Input: strs = ["a"]
+Output: [["a"]]
+
+// My solution with help :/
+
+var groupAnagrams = function (strs) {
+  let str = [];
+  let obj = {};
+
+  strs.forEach((e, index) => {
+    let temp = e.split("").sort().join("");
+
+    if (temp in obj) {
+      obj[temp].push(strs[index]);
+    } else {
+      obj[temp] = [strs[index]];
+    }
+  });
+
+  return Object.values(obj);
+};
+
+const str = ["a", "v"];
+
+console.log(groupAnagrams(str));
+
+
 */
