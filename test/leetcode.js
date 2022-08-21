@@ -430,3 +430,94 @@ console.log(groupAnagrams(str));
 
 
 */
+
+/*
+
+347. Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+
+
+// My solution:
+
+var topKFrequent = function (nums, k) {
+  let copyNums = [...nums];
+  let obj = {};
+  let maxFreq = [];
+
+  copyNums.forEach((e) => {
+    if (e in obj) {
+      obj[e] = obj[e] + 1;
+    } else {
+      obj[e] = 1;
+    }
+  });
+
+  console.log(obj);
+
+  //Extracting the values object and converting from string to integers
+  let keysFreq = Object.values(obj);
+  //console.log(keysFreq);
+
+  //
+  while (maxFreq.length < k) {
+    //
+    console.log(keysFreq);
+    let max = Math.max(...keysFreq);
+    let index = keysFreq.indexOf(max);
+    console.log(`max is ${max} and index is ${index}`);
+    // Selecting the keys
+    let keyObj = Object.keys(obj).find((key) => obj[key] == max);
+    console.log(keyObj);
+    maxFreq.push(+keyObj);
+
+    // deleting the entry( key and value) from obj
+    delete obj[keyObj];
+    keysFreq.splice(index, 1);
+
+    console.log(obj);
+  }
+
+  return maxFreq;
+};
+
+const k = 2;
+const nums = [1, 1, 1, 2, 2, 3];
+
+console.log(topKFrequent(nums, k));
+
+// Forum solution:
+var topKFrequent = function(nums, k) {
+  let f = {}, helper = [], ans = [];
+
+  for (const x of nums) {
+    f[x] = (f[x] || 0) + 1;
+  }
+
+  for (const key in f) {
+    helper.push([key, f[key]]);
+  }
+
+  helper.sort((a, b) => b[1] - a[1]);
+
+  for (let i = 0; i < k; i++) {
+    ans.push(helper[i][0]);
+  }
+
+  return ans;
+}
+
+// Bibliography: https://bobbyhadz.com/blog/javascript-get-object-key-by-value
+
+// Runtime:
+Runtime: 334 ms, faster than 5.02% of JavaScript online submissions for Top K Frequent Elements.
+Memory Usage: 49.9 MB, less than 12.93% of JavaScript online submissions for Top K Frequent Elements.
+
+*/
