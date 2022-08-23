@@ -522,3 +522,52 @@ Memory Usage: 49.9 MB, less than 12.93% of JavaScript online submissions for Top
 
 */
 
+/*
+
+Problem 238 : Product of Array except Selft
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+Example 2:
+
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+
+// My solution: I solved this exercise using hash map but it took long time for the problem, at the end I couldnt figure it out a solution for the exercise, and I found out a solution that was easy to understand at least for me, but  I need definetively more practice.
+
+function check(n) {
+  let result = [];
+  let acc = 1;
+
+  for (let i = 0; i < n.length; i++) {
+    result.push(acc);
+    acc = acc * n[i];
+  }
+
+  acc = 1;
+  for (let i = n.length - 1; i >= 0; i--) {
+    // looping from last position to first one, changing the value of last position with acc and updating acc
+    result[i] = result[i] * acc;
+    acc = acc * n[i];
+  }
+  return result;
+}
+
+const n = [1, 2, 3];
+console.log(check(n));
+
+
+// Runtime
+Runtime: 132 ms, faster than 75.74% of JavaScript online submissions for Product of Array Except Self.
+Memory Usage: 55.6 MB, less than 30.60% of JavaScript online submissions for Product of Array Except Self.
+
+*/
