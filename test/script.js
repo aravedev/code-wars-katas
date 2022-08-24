@@ -4825,3 +4825,80 @@ console.log(removeSmallest(n));
 
 
 */
+
+/*
+Create a function that returns the name of the winner in a fight between two fighters.
+
+Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
+
+Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
+
+Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
+
+Example:
+  declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew") => "Lew"
+  
+  Lew attacks Harry; Harry now has 3 health.
+  Harry attacks Lew; Lew now has 6 health.
+  Lew attacks Harry; Harry now has 1 health.
+  Harry attacks Lew; Lew now has 2 health.
+  Lew attacks Harry: Harry now has -1 health and is dead. Lew wins.
+function Fighter(name, health, damagePerAttack) {
+        this.name = name;
+        this.health = health;
+        this.damagePerAttack = damagePerAttack;
+        this.toString = function() { return this.name; }
+}
+
+// My solution:
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  console.log(fighter1, fighter2, firstAttacker);
+  let times1 = Math.ceil(fighter2.health / fighter1.damagePerAttack);
+  let times2 = Math.ceil(fighter1.health / fighter2.damagePerAttack);
+
+  let result1 = times1 <= times2 ? true : false;
+  let result2 = times2 <= times1 ? true : false;
+  console.log(times1, times2, result1, result2);
+
+  if (fighter1.name === firstAttacker && result1 === true) {
+    return fighter1.toString();
+  } else if (fighter2.name === firstAttacker && result2 === true) {
+    return fighter2.toString();
+  } else if (fighter1.name === firstAttacker && result1 == false) {
+    return fighter2.toString();
+  } else if (fighter2.name === firstAttacker && result2 === false) {
+    return fighter1.toString();
+  }
+}
+
+function Fighter(name, health, damagePerAttack) {
+  this.name = name;
+  this.health = health;
+  this.damagePerAttack = damagePerAttack;
+  this.toString = function () {
+    return this.name;
+  };
+}
+
+console.log(
+  declareWinner(
+    new Fighter("Jerry", 30, 3),
+    new Fighter("Harald", 20, 5),
+    "Harald"
+  )
+);
+
+*/
+
+/*
+
+Write a function that checks if a given string (case insensitive) is a palindrome.
+
+// My solution:
+function isPalindrome(x) {
+  let str = x.toLowerCase().split("").reverse().join("");
+  return x.toLowerCase() === str ? true : false;
+}
+
+console.log(isPalindrome("Abba"));
+*/
