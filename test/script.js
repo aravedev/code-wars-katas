@@ -4943,3 +4943,53 @@ function doubleChar(str) {
 const str = "String";
 console.log(doubleChar(str));
 */
+
+/*
+
+  Given the a list of numbers, return a fixed list so that the values increment by 1 for each index from the minimum value up to the maximum value (both included).
+
+Example
+Input:  1,3,5,6,7,8 Output: 1,2,3,4,5,6,7,8
+
+// My solution:
+function pipeFix(numbers) {
+  const max = Math.max(...numbers);
+  const min = Math.min(...numbers);
+  let result = [];
+  for (let i = min; i <= max; i++) {
+    result.push(i);
+  }
+  return result;
+}
+
+const arr = [1, 2, 3, 12];
+console.log(pipeFix(arr));
+
+*/
+
+/*
+Your task is to make function, which returns the sum of a sequence of integers.
+
+The sequence is defined by 3 non-negative values: begin, end, step (inclusive).
+
+If begin value is greater than the end, function should returns 0
+
+Examples
+
+2,2,2 --> 2
+2,6,2 --> 12 (2 + 4 + 6)
+1,5,1 --> 15 (1 + 2 + 3 + 4 + 5)
+1,5,3  --> 5 (1 + 4)
+
+// My solution:
+const sequenceSum = (begin, end, step) => {
+  let result = 0;
+  for (let i = begin; i <= end; i = i + step) {
+    result += i;
+  }
+
+  return result;
+};
+
+console.log(sequenceSum(1, 5, 1));
+*/
