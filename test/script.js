@@ -5124,3 +5124,59 @@ String.prototype.isUpperCase = function () {
 
 console.log("hELLO I AM DONALD".isUpperCase());
 */
+
+/*
+
+Player starts at a given position & moves twice the value of the dice roll.
+
+Calculate the final position.
+
+// my solution:
+function move(position, roll) {
+  return position + roll * 2;
+}
+
+console.log(move(3, 6));
+
+*/
+
+/*
+Create a combat function that takes the player's current health and the amount of damage recieved, and returns the player's new health. Health can't be less than 0.
+
+//My solution:
+function combat(health, damage) {
+  return health-damage>=0 ? health-damage:0
+}
+*/
+/*
+
+Given a string str, reverse it and omit all non-alphabetic characters.
+
+Example
+For str = "krishan", the output should be "nahsirk".
+
+For str = "ultr53o?n", the output should be "nortlu".
+
+Input/Output
+[input] string str
+A string consists of lowercase latin letters, digits and symbols.
+
+[output] a string
+
+// My solution:
+function reverseLetter(str) {
+  let result = str.split("").map((e) => {
+    if (e.toLowerCase() !== e.toUpperCase()) {
+      return e;
+    }
+  });
+
+  result = result.filter((e) => e !== undefined).reverse();
+  return result.join("");
+}
+
+const str = "ultr53o?n";
+console.log(reverseLetter(str));
+
+
+*/
