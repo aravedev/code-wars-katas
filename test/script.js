@@ -5277,3 +5277,45 @@ function productFib(prod){
 }
 
 */
+
+/*
+We want an array, but not just any old array, an array with contents!
+
+Write a function that produces an array with the numbers 0 to N-1 in it.
+
+For example, the following code will result in an array containing the numbers 0 to 4:
+
+arr(5) // => [0,1,2,3,4]
+
+// My solution:
+const arr = (N) => {
+  let result = [];
+  for (let i = 0; i < N; i++) {
+    result.push(i);
+  }
+  return result;
+};
+
+console.log(arr(5));
+*/
+
+/*
+
+Create a function that takes 2 integers in form of a string as an input, and outputs the sum (also as a string):
+
+Example: (Input1, Input2 -->Output)
+
+"4",  "5" --> "9"
+"34", "5" --> "39"
+"", "" --> "0"
+"2", "" --> "2"
+"-5", "3" --> "-2"
+
+// My solution:
+function sumStr(a, b) {
+  let result = Number(a) + Number(b);
+  return result.toString();
+}
+console.log(sumStr("4", "5"));
+
+*/
