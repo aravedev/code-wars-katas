@@ -5361,3 +5361,49 @@ const quarterOf = (month) => {
 
 console.log(quarterOf(11));
 */
+
+/*
+
+Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
+
+For example: (Input --> Output)
+
+10 --> 1
+99 --> 18
+-32 --> 5
+Let's assume that all numbers in the input will be integer values.
+
+// My solution.
+function sumDigits(number) {
+  const n = Math.abs(number).toString().split("");
+  let result = n.map((e) => Number(e)).reduce((acc, sum) => acc + sum);
+
+  return result;
+}
+
+console.log(sumDigits(10));
+*/
+
+/*
+
+Complete the function that takes two integers (a, b, where a < b) and return an array of all integers between the input parameters, including them.
+
+For example:
+
+a = 1
+b = 4
+--> [1, 2, 3, 4]
+
+//My solution:
+
+function between(a, b) {
+  let result = [];
+  for (let i = a; i <= b; i++) {
+    result.push(i);
+  }
+
+  return result;
+}
+
+console.log(between(1, 4));
+*/
