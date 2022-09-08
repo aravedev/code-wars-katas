@@ -5457,3 +5457,68 @@ const str = "http://google.co.jp";
 console.log(domainName(str));
 
 */
+
+/*
+In this kata you will create a function that takes in a list and returns a list with the reverse order.
+
+Examples (Input -> Output)
+* [1, 2, 3, 4]  -> [4, 3, 2, 1]
+* [9, 2, 0, 7]  -> [7, 0, 2, 9]
+
+// my solution:
+function reverseList(list) {
+  return list.reverse();
+}
+
+console.log(reverseList([1, 2, 3, 4]));
+*/
+
+/*
+https://www.codewars.com/kata/54d512e62a5e54c96200019e/train/javascript
+
+
+*/
+
+const isPrime = (num) => {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+    if (num % i === 0) return false;
+  return num > 1;
+};
+
+function primeFactors(n, i = 2, factor = 0, arr = []) {
+  let result = 0;
+  let counter = 0;
+  let temp = [...arr];
+  let j = i;
+  if (isPrime(j)) {
+    if (factor === 0) {
+      factor = n;
+      result = factor / i;
+    } else {
+      result = factor / i;
+    }
+
+    console.log(result);
+    if (result % 1 == 0) {
+      temp.push(j);
+      counter = temp.reduce((acc, mul) => acc * mul);
+      console.log(temp);
+      console.log(`counter is ${counter}`);
+      console.log(j);
+      counter == n ? counter : primeFactors(n, j, result, temp);
+    } else {
+      j = j + 1;
+      return primeFactors(n, j, result, temp);
+    }
+  } else {
+    j = j + 1;
+    console.log(j);
+    return primeFactors(n, j, result, temp);
+  }
+}
+
+const n = 9;
+console.log(primeFactors(n));
+
+let x = [2, 3, 4].reduce((acc, sum) => acc * sum);
+console.log(x);
