@@ -5478,7 +5478,7 @@ https://www.codewars.com/kata/54d512e62a5e54c96200019e/train/javascript
 
 
 */
-
+/*
 const isPrime = (num) => {
   for (let i = 2, s = Math.sqrt(num); i <= s; i++)
     if (num % i === 0) return false;
@@ -5522,3 +5522,30 @@ console.log(primeFactors(n));
 
 let x = [2, 3, 4].reduce((acc, sum) => acc * sum);
 console.log(x);
+*/
+
+/*
+find the third angle of a triangle given 2 angles previously
+
+//
+function otherAngle(a, b) {
+  return 180 - (a + b);
+}
+console.log(otherAngle(30, 60));
+*/
+/*
+Write a function that returns a string in which firstname is swapped with last name.
+
+Example(Input --> Output)
+
+"john McClane" --> "McClane john"
+
+// My solution:
+function nameShuffler(str) {
+  return str.split(" ").reverse().join(" ");
+}
+
+const str = "john McClane";
+console.log(nameShuffler(str));
+
+*/
