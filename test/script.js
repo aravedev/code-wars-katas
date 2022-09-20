@@ -5635,3 +5635,67 @@ console.log(stockList(b, c));
 */
 
 // "(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
+
+/*
+
+ 6 kata
+
+Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+
+For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
+
+The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
+
+Based on: http://oj.leetcode.com/problems/two-sum/
+
+// my solution:
+
+function twoSum(numbers, target) {
+  let dif = 0;
+  let result = [];
+
+  //take the target and substract the number, check if the result is in the array numbers
+
+  numbers.forEach((n, indexN) => {
+    dif = target - n;
+
+    if (numbers.includes(dif)) {
+      let positionDif = numbers.indexOf(dif);
+      return (result = [positionDif, indexN]);
+    }
+  });
+  return result;
+}
+
+const n = [1234, 5678, 9012];
+const target = 14690;
+console.log(twoSum(n, target));
+*/
+
+/*
+
+8 kata
+
+Create a function called shortcut to remove the lowercase vowels (a, e, i, o, u ) in a given string.
+
+Examples
+"hello"     -->  "hll"
+"codewars"  -->  "cdwrs"
+"goodbye"   -->  "gdby"
+"HELLO"     -->  "HELLO"
+don't worry about uppercase vowels
+y is not considered a vowel for this kata
+
+//my solution:
+
+function shortcut(string) {
+  const vowels = ["a", "e", "i", "o", "u"];
+
+  let str = string.split("").map((char) => (vowels.includes(char) ? "" : char));
+  return str.join("");
+}
+
+const str = "how are you today?";
+console.log(shortcut(str));
+
+*/
